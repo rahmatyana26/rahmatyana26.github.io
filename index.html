@@ -10,7 +10,7 @@
         <div class='position-absolute top-50 start-50 translate-middle'>
             <button id='button' class='btn btn-primary btn-lg' onclick='mulai()'> Coba Pencet </button>
             <div id='iloveyou' style='display: none;'>
-                <h2 class='text-center'>Aku sayang kamu<br>&#10084;&#65039;</h2>
+                <h2 class='text-center'>Aku sayang kamu Lulu Amelia :))<br>&#10084;&#65039;</h2>
             </div>
         </div>
         <span id='hati' class='fixed-bottom text-center my-3' onclick='hati()'></span>
@@ -38,30 +38,116 @@
                         cancelButtonText: 'Gak',
                         showCancelButton: true,
                     });
-                    if(sayang){
-                        await swals.fire('Aku juga sayang banget sama kamu');
+                if(nama)
+                    var { isConfirmed: sayang_banget } = await swals.fire({
+                        title: `jujur ${nama} emang bener kamu sayang sama ${author}`,
+                        confirmButtonText: 'Sayang bangett sumpah',
+                        cancelButtonText: 'Gak',
+                        showCancelButton: true,
+                    });
+                if(nama)
+                    var { isConfirmed: sayang_banget } = await swals.fire({
+                        title: `ok kalo ${nama} sayang sama ${author} coba jawab pertanyaan ini ya`,
+                        confirmButtonText: 'Iya mau aku jawab',
+                        cancelButtonText: 'Gak',
+                        showCancelButton: true,
+            
+                    });
+                    if(sayang_banget){
                         var { value: persen } = await swals.fire({
                             title: 'Seberapa sayang emangnya?',
                             icon: 'question',
                             input: 'range',
-                            inputLabel: 'Antara 1-100 ya',
+                            inputLabel: 'Antara 1-100 ya (harus 100% pokoknya!!)',
                             inputAttributes: {
                                 min: 1,
                                 max: 100,
                             },
                             inputValue: 50
+                    
+
                         });
                         if(persen){
                             await swals.fire(`Makasih ya udah sayang sama ${author} ${persen}%`);
                             var { isConfirmed: kangen } = await swals.fire({
-                                title: 'Sekarang kamu kangen ga sama aku?',
-                                confirmButtonText: 'Kangen',
+                                title: 'Karena kamu jawab 100% kamu bisa lanjut jawab soalnya!',
+                                confirmButtonText: 'Lanjut',
                                 cancelButtonText: 'Gak!',
                                 showCancelButton: true,
+
                             });
-                            if(kangen){
-                                await swals.fire('Huhu iya aku juga kangen kamu :((');
-                                await swals.fire('Terakhir deh sayang');
+                         if(sayang_banget)
+                        var { value: apa } = await swals.fire({
+                        title: `Apa yang bikin ${nama} sayang sama ${author} coba jelasin`,
+                        input: 'text',
+                        showCancelButton: true,
+
+                        });
+                        if(apa)
+                        var { isConfirmed: sayang_banget } = await swals.fire({
+                            title: `Ouh jadi ${nama} sayang sama ${author} karena ${apa}`,
+                            confirmButtonText: 'Iya karena itu',
+                            cancelButtonText: 'Gak aku boong itu',
+                            showCancelButton: true,
+                        });
+                        if(sayang_banget)
+                        var { value: jadian } = await swals.fire({
+                        title: `Emang ${nama} udah berapa lama jadian sama ${author} `,
+                        input: 'text',
+                        showCancelButton: true,
+                    });
+                        if(jadian)
+                        var { isConfirmed: jadian_aja } = await swals.fire({
+                            title: `Ouh jadi ${nama} jadian sama ${author} baru ${jadian} toh, gamau udahan apa gitu`,
+                            confirmButtonText: 'Gamau aku kan setia',
+                            cancelButtonText: 'Iya sih pengennya sih udahan',
+                            showCancelButton: true,
+
+                        });
+                        if(jadian_aja)
+                        var { value: nyaman } = await swals.fire({
+                            title: `Emang apa sih yang buat ${nama} nyaman sama ${author} sampe bisa jadian selama ${jadian} `,
+                            input: 'text',
+                            showCancelButton: true,
+
+                        });
+                        if(nyaman)
+                        var { isConfirmed: nyaman_gitu } = await swals.fire({
+                            title: `jadi ${nama} nyaman sama ${author} karena ${nyaman}. Ngga boong kan ini jawabnya`,
+                            confirmButtonText: 'Iya karena itu ngga boong deh',
+                            cancelButtonText: 'Gamau jawab ah',
+                            showCancelButton: true,
+                        });
+                        if(nyaman_gitu)
+                        var { value: kesel } = await swals.fire({
+                            title: `Dari tadi kan nanya yang buat kamu suka sama ${author} nah sekarang aku nanya apa yang buat kamu kesel dari prilakunya ${author} ini ke kamu ${nama} `,
+                            input: 'text',
+                            showCancelButton: true,
+                        });
+                        if(kesel)
+                        var { isConfirmed: gombal } = await swals.fire({
+                            title: `Kalo ${author} selama ini bikin kamu kesel karena ${kesel} kenapa kamu ngga putusin aja `,
+                            confirmButtonText: 'Gamau PUTUS tauu',
+                            cancelButtonText: 'Iya PUTUS aja deh',
+                            showCancelButton: true,
+                        });
+                        if(gombal)
+                        var { value: gombal_aja } = await swals.fire({
+                            title: `Karena kamu gamau putus berati kamu sayang kan sama ${author} coba lengkapin kata yang hilang ini I .... You `,
+                            input: 'text',
+                            showCancelButton: true,
+                        });
+                        if(gombal_aja)
+                        var { isConfirmed: saae } = await swals.fire({
+                            title: ` I LOVE YOU TOO ${nama} sayang `,
+                            confirmButtonText: 'Bisa aja nih yang buatnya',
+                            cancelButtonText: 'gaboleh dipencet nanti Selesai, ada lagi lanjutannya soalnya',
+                            showCancelButton: true,
+
+                            });
+                            if(saae){
+                                await swals.fire('Makasih ya udah jawab semuanya');
+                                await swals.fire('Terakhir deh ini bener terakhir');
                                 await swals.fire('Coba klik ikon hati di paling bawah dong');
                             } else {
                                 //gak kangen
